@@ -1,15 +1,28 @@
 \section{Related Work} \label{sec:related}
+We review the related work about applications on coupled architectures and in-memory databases on emerging hardware.
 
-\subsection{Coupled Architectures}
+\subsection{Applications on Coupled Architectures}
+As a novel design, coupled architectures have been widely applied to various fields such as relational databases and big data processing.
 
 \subsubsection{Databases}
+Query co-processing on GPUs is a classic topic that has been exhaustively studied in research community \cite{Fang2010, He2009, He2008, Kaldewey2012, Kim2009, pirk2011}. With the increasing adoption of coupled CPU-GPU architectures, databases on coupled CPU-GPU architectures \cite{He2013, Zhang2013, He2014} are also becoming attractive research topics. He et al. \cite{He2013} proposed a novel fine-grained workload scheduling to optimize hash joins on coupled CPU-GPU architectures. Zhang et al. \cite{Zhang2013} implemented a fully-fledged query processing system named OmniDB that is able to schedule workload to all available devices in coupled architectures at different levels of granularity such as kernel, operator and query. Furthermore, He et al. \cite{He2014} further improved their query processing engine by utilizing the shared cache to further reduce memory access latency. All of these query processing systems have demonstrated significant performance improvement over the discrete architectures.
 
 \subsubsection{Data Processing}
+Except the databases on coupled architectures, big data processing can also benefit from this novel architecture design. MapReduce \cite{Dean2004} is a popular programming framework for processing large data sets with parallel and distributed algorithms to exploit the great computing power of clusters in a scalable fashion. Though Hong et al. \cite{Hong2010} has implemented a MapReduce framework named MapCG on discrete CPU-GPU architectures to accelerate MapReduce applications using both CPU and discrete GPU. However, no consistent speedups over a single device can be obtained as data transfers between the host and the GPU and frequent kernel launches incur significant overhead. Later, Chen et al. \cite{Chen2012} proposed a MapReduce framework built on coupled CPU-GPU architectures with flexible workload scheduling algorithms enabled by the shared memory. As the results on 4 applications show, their system achieves 1.21 to 2.1 speed-up over the best performance of the CPU-only and GPU-only versions. The speed-up over a single CPU core execution can even achieve 28.68. Hetherington et al. \cite{Hetherington2012} evaluated a widely used key-value store middleware application, Memcached, on both discrete and coupled CPU-GPU architectures.
 
-\subsubsection{Architecture Design}
+Besides, graph processing is another important field that benefits from coupled architectures. Graphs are common data structures in various applications such as social networks, chemistry and web link analysis. The efficiency of graph processing is a must for high performance of the entire system. Existing studies such as Medusa \cite{Zhong2014} has simplified the programming to solve common graph computation tasks by leveraging the power of GPUs. Lin et al \cite{Linheng2015} proposed an adaptive algorithm to automatically find the optimal algorithm on the suitable devices of the coupled architecture. 1.6X speedup can be obtained compared with the state-of-the-art algorithms in an energy consumption index, namely TEPS/Watt(Traversed Edges Per Second every Watt). Farooqui et al. \cite{Farooqui2016} conducted a more comprehensive evaluation over a mix of graph applications on coupled CPU-GPU architectures. As the experimental results show, their system Luminar can obtain improvements in both throughput and energy efficiency.
 
-\subsection{In-memory Databases}\
+Though significant performance improvements can be observed in many applications, Zhang et al. \cite{Zhangfeng2015} port all programs in Rodinia benchmark and find that co-processing results are not always better than running on CPU-only or GPU-only. Thus, the computing and memory access pattern should also be taken into consideration when deploying applications on coupled architectures for co-processing.
 
+\subsubsection{Architecture-conscious Design}
+Yang et al. \cite{Yang2012}
+
+
+\subsection{In-memory Databases on Emerging Hardware}
+Due to the increasing size of main memory, modern databases can reside in main memory entirely to reduce the access latency. 
 \subsubsection{CPU-based Databases}
 
 \subsubsection{GPU-based Databases}
+
+\subsubsection{FPGA-based Databases}
+\jiong{I think Zeke could help on this paragraph if this paragraph is needed.}
